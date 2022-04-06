@@ -2,12 +2,11 @@ const fetch = require('node-fetch');
 require('dotenv').config({ path: `.env.development.local` });
 
 const handler = async (event) => {
-  const zip = event.queryStringParameters.zip;
-  console.log(zip);
+  const { zip } = event.queryStringParameters;
   try {
-    const resp = await fetch(`https://api.yelp.com/v3/businesses/`, {
-      header: {
-        Authorization: `Bearer ${process.env.REACT_APP_YELP_KEY}`,
+    const resp = await fetch(`https://api.yelp.com/v3/businesses/search?location=${zip}&category="restaurants"`, {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`,
       },
     });
     const data = await resp.json();
@@ -20,7 +19,7 @@ const handler = async (event) => {
   } catch (error) {
     console.log(error);
     return {
-      satusCode: 500,
+      statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),
     };
   }

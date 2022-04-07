@@ -23,8 +23,9 @@ function App() {
 
 
   const clickyClick = async () => {
-    const data = await fetchBusinesses(zip, search);
     if (zip === '') return setZip('98607');
+    const data = await fetchBusinesses(zip, search);
+    
     
   
     return setBusinesses(data.businesses);

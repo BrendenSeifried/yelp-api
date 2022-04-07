@@ -21,9 +21,12 @@ function App() {
   }, []);
 
 
+
   const clickyClick = async () => {
     const data = await fetchBusinesses(zip, search);
+    if (zip === '') return setZip('98607');
     
+  
     return setBusinesses(data.businesses);
   };
 

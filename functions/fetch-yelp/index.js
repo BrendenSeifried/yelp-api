@@ -17,7 +17,7 @@ const handler = async (event) => {
       body: json,
     };
   } catch (error) {
-    console.log(error);
+   
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),

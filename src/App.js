@@ -23,7 +23,8 @@ function App() {
 
 
   const clickyClick = async () => {
-    if (zip === '') return setZip('98607');
+    // if (zip === '') return setZip('98607');
+    if (zip === '') return alert('You forgot to enter a zip code.');
     const data = await fetchBusinesses(zip, search);
     
     
